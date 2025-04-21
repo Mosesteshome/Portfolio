@@ -14,7 +14,8 @@ function App() {
         <Routes>
           <Route path="/starter" element={<StarterPage />} />
           <Route path="/services" element={<ServiceDetails />} />
-          <Route path="/portfolio" element={<PortfolioDetails />} />
+          <Route path="*" element={<div style={{ textAlign: 'center', marginTop: '50px' }}>Page Not Found</div>} />
+          <Route path="/portfolio-details/:id" element={<PortfolioDetails />} />
           <Route path="/" element={<IndexPage />} />
         </Routes>
       </div>

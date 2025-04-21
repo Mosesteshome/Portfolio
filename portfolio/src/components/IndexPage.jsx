@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './assets/styles/main.css';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,7 +21,7 @@ import 'swiper/swiper-bundle.css';
 // imagees
 
 import my_profile_img from './assets/img/my-profile-img.jpg';
-import hero_bg from './assets/img/hero-bg.jpg';
+import hero_bg from './assets/img/hero-bg1.png';
 import profile_img from './assets/img/my-profile-img.jpg';
 import portfolio_app_1 from './assets/img/portfolio/app-1.jpg';
 import portfolio_product_1 from './assets/img/portfolio/product-1.jpg';
@@ -40,6 +40,7 @@ import testimonial_2 from './assets/img/testimonials/testimonials-2.jpg';
 import testimonial_3 from './assets/img/testimonials/testimonials-3.jpg';
 import testimonial_4 from './assets/img/testimonials/testimonials-4.jpg';
 import testimonial_5 from './assets/img/testimonials/testimonials-5.jpg';
+import RHISN1 from './assets/img/portfolio/RHISNproject/1.png';
 
 
 
@@ -300,6 +301,43 @@ import testimonial_5 from './assets/img/testimonials/testimonials-5.jpg';
 
 
 function IndexPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const [status, setStatus] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('Sending...');
+
+    try {
+      const response = await fetch('http://localhost:5000/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('Message sent successfully!');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('Failed to send message.');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('Failed to send message. error');
+    }
+  };
+
   useEffect(() => {
     const selectTyped = document.querySelector('.typed');
     if (selectTyped) {
@@ -340,6 +378,32 @@ function IndexPage() {
 
     skillsAnimation.forEach((item) => {
       observer.observe(item);
+    });
+
+    // Initialize Isotope
+    const isotopeContainers = document.querySelectorAll('.isotope-layout');
+    isotopeContainers.forEach((isotopeItem) => {
+      const layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
+      const filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
+      const sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
+
+      const initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
+        itemSelector: '.isotope-item',
+        layoutMode: layout,
+        filter: filter,
+        sortBy: sort,
+      });
+
+      // Add click event to filters
+      isotopeItem.querySelectorAll('.isotope-filters li').forEach((filterElement) => {
+        filterElement.addEventListener('click', function () {
+          isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
+          this.classList.add('filter-active');
+          initIsotope.arrange({ 
+            filter: this.getAttribute('data-filter'),
+          });
+        });
+      });
     });
 
   }, []);
@@ -598,147 +662,159 @@ function IndexPage() {
         <section id="portfolio" className="portfolio section light-background">
           <div className="container section-title" data-aos="fade-up">
             <h2>Portfolio</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>Take a look at some of my work below. Each project reflects my skills in data analysis, backend development, mobile app development, and turning ideas into practical solutions.</p>
           </div>
           <div className="container">
             <div className="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
               <ul className="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                 <li data-filter="*" className="filter-active">All</li>
-                <li data-filter=".filter-app">App</li>
-                <li data-filter=".filter-product">Product</li>
-                <li data-filter=".filter-branding">Branding</li>
-                <li data-filter=".filter-books">Books</li>
+                <li data-filter=".filter-app">Power bi</li>
+                <li data-filter=".filter-product">App </li>
+                <li data-filter=".filter-branding">Website</li>
+                <li data-filter=".filter-books">Python</li>
               </ul>
               <div className="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_app_1} className="img-fluid" alt="" />
+                    <img src={RHISN1} className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>App 1</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_app_1} title="App 1" data-gallery="portfolio-gallery-app" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/1" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_product_1} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_product_1} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>Product 1</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_product_1} title="Product 1" data-gallery="portfolio-gallery-product" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/2" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_branding_1} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_branding_1} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>Branding 1</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_branding_1} title="Branding 1" data-gallery="portfolio-gallery-branding" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/3" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_books_1} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_books_1} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>Books 1</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_books_1} title="Branding 1" data-gallery="portfolio-gallery-book" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/4" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_app_2} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_app_2} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>App 2</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_app_2} title="App 2" data-gallery="portfolio-gallery-app" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/5" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_product_2} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_product_2} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>Product 2</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_product_2} title="Product 2" data-gallery="portfolio-gallery-product" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/6" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_branding_2} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_branding_2} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>Branding 2</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_branding_2} title="Branding 2" data-gallery="portfolio-gallery-branding" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/7" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_books_2} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_books_2} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>Books 2</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_books_2} title="Branding 2" data-gallery="portfolio-gallery-book" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/8" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_app_3} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_app_3} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>App 3</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_app_3} title="App 3" data-gallery="portfolio-gallery-app" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/9" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_product_3} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_product_3} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>Product 3</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_product_3} title="Product 3" data-gallery="portfolio-gallery-product" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/10" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_branding_3} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_branding_3} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>Branding 3</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_branding_3} title="Branding 2" data-gallery="portfolio-gallery-branding" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/11" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                   <div className="portfolio-content h-100">
-                    <img src={portfolio_books_3} className="img-fluid" alt="" />
+                    {/* <img src={portfolio_books_3} className="img-fluid" alt="" /> */}
                     <div className="portfolio-info">
                       <h4>Books 3</h4>
                       <p>Lorem ipsum, dolor sit amet consectetur</p>
-                      <a href={portfolio_books_3} title="Branding 3" data-gallery="portfolio-gallery-book" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                      <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
+                      <Link to="/portfolio-details/12" title="More Details" className="details-link">
+                        <i className="bi bi-link-45deg"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -751,33 +827,31 @@ function IndexPage() {
         <section id="services" className="services section">
           <div className="container section-title" data-aos="fade-up">
             <h2>Services</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>Whether you're a business looking to make data-driven decisions, a startup needing a backend system, or someone with an idea for a mobile app — I’ve got you covered.</p>
           </div>
           <div className="container">
             <div className="row gy-4">
               <div className="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                 <div className="icon flex-shrink-0"><i className="bi bi-briefcase"></i></div>
                 <div>
-                  <h4 className="title"><a href="service-details.html" className="stretched-link">Data Analysis & Visualization</a></h4>
-                  <p className="description">I clean and transform raw data for accuracy, create interactive dashboards with Streamlit, Power BI, and Tableau, and apply statistical analysis using Stata and SPSS for deeper insights. [Learn more →] </p>
+                  <h4 className="title">Data Analysis & Visualization</h4>
+                  <p className="description">I clean and transform raw data for accuracy, create interactive dashboards with Streamlit, Power BI, and Tableau, and apply statistical analysis using Stata and SPSS for deeper insights. {/* [Learn more →] */}</p>
                 </div>
               </div>
               <div className="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                 <div className="icon flex-shrink-0"><i className="bi bi-card-checklist"></i></div>
                 <div>
-                  <h4 className="title"><a href="service-details.html" className="stretched-link">Full-Stack Web Development</a></h4>
-                  <p className="description">I build scalable backend systems with Node.js and Express, develop responsive frontends using React, and manage databases with SQL and MongoDB for optimized performance. [Learn more →]</p>
+                  <h4 className="title">Full-Stack Web Development</h4>
+                  <p className="description">I build scalable backend systems with Node.js and Express, develop responsive frontends using React, and manage databases with SQL and MongoDB for optimized performance. {/* [Learn more →] */}</p>
                 </div>
               </div>
               <div className="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
                 <div className="icon flex-shrink-0"><i className="bi bi-bar-chart"></i></div>
                 <div>
-                  <h4 className="title"><a href="service-details.html" className="stretched-link">Automation & Workflow Optimization
-                  </a></h4>
-                  <p className="description">I automate workflows with Google Apps Script and Excel, reducing manual tasks, and integrate SurveyCTO to enhance data collection and processing efficiency. [Learn more →]</p>
+                  <h4 className="title">Mobile App Development</h4>
+                  <p className="description">Create smooth, responsive mobile apps using Flutter — ideal for startups and businesses looking to go mobile-first. {/* [Learn more →] */}</p>
                 </div>
               </div>
-          
             </div>
           </div>
         </section>
@@ -809,8 +883,7 @@ function IndexPage() {
                     <p>
                       <i className="bi bi-quote quote-icon-left"></i>
                       <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                      <i className="bi bi-quote quote-icon-right"></i>
-                    </p>
+                      <i className="bi bi-quote quote-icon-right"></i></p>
                     <img src={testimonial_2} className="testimonial-img" alt="" />
                     <h3>Sara Wilsson</h3>
                     <h4>Designer</h4>
@@ -862,7 +935,7 @@ function IndexPage() {
         <section id="contact" className="contact section">
           <div className="container section-title" data-aos="fade-up">
             <h2>Contact</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Have a project in mind or need help? Feel free to reach out!</p>
           </div>
           <div className="container" data-aos="fade-up" data-aos-delay="100">
             <div className="row gy-4">
@@ -872,7 +945,7 @@ function IndexPage() {
                     <i className="bi bi-geo-alt flex-shrink-0"></i>
                     <div>
                       <h3>Address</h3>
-                      <p>A108 Adam Street, New York, NY 535022</p>
+                      <p>Addis Ababa, Ethiopia</p>
                     </div>
                   </div>
                   <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
@@ -893,32 +966,62 @@ function IndexPage() {
                 </div>
               </div>
               <div className="col-lg-7">
-                <form action="forms/contact.php" method="post" className="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                <form onSubmit={handleSubmit} className="php-email-form">
                   <div className="row gy-4">
                     <div className="col-md-6">
                       <label htmlFor="name-field" className="pb-2">Your Name</label>
-                      <input type="text" name="name" id="name-field" className="form-control" required />
+                      <input
+                        type="text"
+                        name="name"
+                        id="name-field"
+                        className="form-control"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     <div className="col-md-6">
                       <label htmlFor="email-field" className="pb-2">Your Email</label>
-                      <input type="email" className="form-control" name="email" id="email-field" required />
+                      <input
+                        type="email"
+                        name="email"
+                        id="email-field"
+                        className="form-control"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     <div className="col-md-12">
                       <label htmlFor="subject-field" className="pb-2">Subject</label>
-                      <input type="text" className="form-control" name="subject" id="subject-field" required />
+                      <input
+                        type="text"
+                        name="subject"
+                        id="subject-field"
+                        className="form-control"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     <div className="col-md-12">
                       <label htmlFor="message-field" className="pb-2">Message</label>
-                      <textarea className="form-control" name="message" rows="10" id="message-field" required></textarea>
+                      <textarea
+                        name="message"
+                        id="message-field"
+                        className="form-control"
+                        rows="10"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                      ></textarea>
                     </div>
                     <div className="col-md-12 text-center">
-                      <div className="loading">Loading</div>
-                      <div className="error-message"></div>
-                      <div className="sent-message">Your message has been sent. Thank you!</div>
                       <button type="submit">Send Message</button>
                     </div>
                   </div>
                 </form>
+                {status && <div className="mt-3 text-center">{status}</div>}
               </div>
             </div>
           </div>
