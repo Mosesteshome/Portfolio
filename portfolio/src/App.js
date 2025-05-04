@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import StarterPage from './components/StarterPage';
 import ServiceDetails from './components/ServiceDetails';
