@@ -4,8 +4,13 @@ import ServiceDetails from './components/ServiceDetails';
 import PortfolioDetails from './components/PortfolioDetails';
 import IndexPage from './components/IndexPage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    document.title = "Muse Teshome's Portfolio";
+  }, []);
+
   return (
     <Router basename="/Portfolio">
       <div className="App">
