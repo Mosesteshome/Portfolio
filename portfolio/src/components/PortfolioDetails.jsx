@@ -7,7 +7,7 @@ import RHISN2 from './assets/img/portfolio/RHISNproject/2.png';
 import RHISN3 from './assets/img/portfolio/RHISNproject/3.png';
 import RHISN4 from './assets/img/portfolio/RHISNproject/4.png';
 import RHISN5 from './assets/img/portfolio/RHISNproject/5.png';
-import portfolio_product_1 from './assets/img/portfolio/product-1.jpg';
+import website from './assets/img/portfolio/website-portfolio.png';
 
 function PortfolioDetails() {
   const { id } = useParams();
@@ -15,16 +15,16 @@ function PortfolioDetails() {
 
   const projectDetails = {
     1: {
-      title: 'App 1',
-      category: 'Web Design',
-      description: 'Description for App 1.',
+      title: 'power bi Dashboard 1',
+      category: 'power bi',
+      description: 'Dashboard made using Power BI.For the purpose of data visualization and analysis on a survey conducted in Ethiopia.',
       images: [RHISN1, RHISN2, RHISN3, RHISN4, RHISN5],
     },
-    2: {
-      title: 'Product 1',
-      category: 'Product Design',
-      description: 'Description for Product 1.',
-      images: [portfolio_product_1],
+    3: {
+      title: 'Portfolio website',
+      category: 'website Design',
+      description: 'A Portfolio website showcasing my work and skills.',
+      images: [website],
     },
     // Add more project details as needed
   };
@@ -42,13 +42,13 @@ function PortfolioDetails() {
           <div className="logo d-flex align-items-center justify-content-center">
             <h1 className="sitename">Muse Teshome</h1>
           </div>
-          <div className="social-links text-center">
+          {/* <div className="social-links text-center">
             <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
             <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
             <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
             <a href="#" className="google-plus"><i className="bi bi-skype"></i></a>
             <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
-          </div>
+          </div> */}
           <nav id="navmenu" className="navmenu">
             <ul>
               <li><Link to="/" className="active"><i className="bi bi-house navicon"></i> Home</Link></li>
@@ -87,13 +87,13 @@ function PortfolioDetails() {
         <div className="logo d-flex align-items-center justify-content-center">
           <h1 className="sitename">Muse Teshome</h1>
         </div>
-        <div className="social-links text-center">
+        {/* <div className="social-links text-center">
           <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
           <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
           <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
           <a href="#" className="google-plus"><i className="bi bi-skype"></i></a>
           <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
-        </div>
+        </div> */}
         <nav id="navmenu" className="navmenu">
           <ul>
             <li><Link to="/" className="active"><i className="bi bi-house navicon"></i> Home</Link></li>
