@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './assets/styles/main.css';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,6 +17,7 @@ import Swiper from 'swiper';
 import 'aos/dist/aos.css';
 import 'glightbox/dist/css/glightbox.css';
 import 'swiper/swiper-bundle.css';
+import emailjs from '@emailjs/browser';
 
 // imagees
 
@@ -280,27 +281,8 @@ import RHISN1 from './assets/img/portfolio/RHISNproject/1.png';
 
 })();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function IndexPage() {
+  const form = useRef(null); // Ensure form is initialized with useRef
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -310,32 +292,22 @@ function IndexPage() {
 
   const [status, setStatus] = useState('');
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_zdvc0lj', 'template_p5ll57u', form.current, 'z2plQ7sdZ1xzUTGpN')
+      .then((result) => {
+          setStatus(<div className="alert alert-success mt-3" role="alert">Message sent successfully!</div>);
+          form.current.reset();
+      }, (error) => {
+          setStatus(<div className="alert alert-danger mt-3" role="alert">Failed to send message. Please try again.</div>);
+          console.log(error.text);
+      });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('Sending...');
-
-    try {
-      const response = await fetch('http://localhost:5000/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setStatus('Message sent successfully!');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        setStatus('Failed to send message.');
-      }
-    } catch (error) {
-      console.error(error);
-      setStatus('Failed to send message. error');
-    }
   };
 
   useEffect(() => {
@@ -421,13 +393,7 @@ function IndexPage() {
           <h1 className="sitename">Muse Teshome</h1>
         </div>
 
-        <div className="social-links text-center">
-          <a href="#" className="twitter"><i className="bi bi-twitter-x"></i></a>
-          <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
-          <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
-          <a href="#" className="google-plus"><i className="bi bi-skype"></i></a>
-          <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
-        </div>
+
 
         <nav id="navmenu" className="navmenu">
           <ul>
@@ -962,33 +928,42 @@ function IndexPage() {
                       <p>mosesteshome@gmail.com</p>
                     </div>
                   </div>
+                  <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                  <i className="bi bi-linkedin flex-shrink-0"></i>
+                  <div>
+                    <h3>LinkedIn</h3>
+                    <p>
+                      <a href="https://www.linkedin.com/in/moses-teshome/" target="_blank" rel="noopener noreferrer">
+                        Moses Teshome
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
                   {/* <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style={{ border: 0, width: '100%', height: '270px' }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe> */}
                 </div>
               </div>
               <div className="col-lg-7">
-                <form onSubmit={handleSubmit} className="php-email-form">
+                <form ref={form} onSubmit={sendEmail} className="php-email-form">
+                  {status && <div className="mt-3">{status}</div>} {/* Place the alert above the form */}
                   <div className="row gy-4">
                     <div className="col-md-6">
-                      <label htmlFor="name-field" className="pb-2">Your Name</label>
+                      <label htmlFor="name-field" className="pb-2">Name</label>
                       <input
                         type="text"
                         name="name"
                         id="name-field"
                         className="form-control"
-                        value={formData.name}
-                        onChange={handleChange}
                         required
                       />
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="email-field" className="pb-2">Your Email</label>
+                      <label htmlFor="email-field" className="pb-2">Email</label>
                       <input
                         type="email"
                         name="email"
                         id="email-field"
                         className="form-control"
-                        value={formData.email}
-                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -999,20 +974,16 @@ function IndexPage() {
                         name="subject"
                         id="subject-field"
                         className="form-control"
-                        value={formData.subject}
-                        onChange={handleChange}
                         required
                       />
                     </div>
                     <div className="col-md-12">
-                      <label htmlFor="message-field" className="pb-2">Message</label>
+                      <label htmlFor="message-field" className="pb-2">Message:</label>
                       <textarea
                         name="message"
                         id="message-field"
                         className="form-control"
-                        rows="10"
-                        value={formData.message}
-                        onChange={handleChange}
+                        rows="2"
                         required
                       ></textarea>
                     </div>
@@ -1021,7 +992,6 @@ function IndexPage() {
                     </div>
                   </div>
                 </form>
-                {status && <div className="mt-3 text-center">{status}</div>}
               </div>
             </div>
           </div>
