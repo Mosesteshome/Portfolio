@@ -8,6 +8,10 @@ import RHISN3 from './assets/img/portfolio/RHISNproject/3.png';
 import RHISN4 from './assets/img/portfolio/RHISNproject/4.png';
 import RHISN5 from './assets/img/portfolio/RHISNproject/5.png';
 import website from './assets/img/portfolio/website-portfolio.png';
+import streamlit1 from './assets/img/portfolio/Streamlit/1.jpeg';
+import streamlit2 from './assets/img/portfolio/Streamlit/2.jpeg';
+import streamlit3 from './assets/img/portfolio/Streamlit/3.png';
+import streamlit4 from './assets/img/portfolio/Streamlit/4.png';
 
 function PortfolioDetails() {
   const { id } = useParams();
@@ -19,6 +23,12 @@ function PortfolioDetails() {
       category: 'power bi',
       description: 'Dashboard made using Power BI.For the purpose of data visualization and analysis on a survey conducted in Ethiopia.',
       images: [RHISN1, RHISN2, RHISN3, RHISN4, RHISN5],
+    },
+    2: {
+      title: 'stream lit Dashboard ',
+      category: 'python ',
+      description: 'The beU Delivery Dashboard is an internal analytics tool built using Python, Pandas, SQL, and Streamlit to support operational monitoring. It allows users to interactively filter and view performance metrics by category—such as Area Manager or Delivery Data—while minimizing unnecessary data load. In the Area Manager section, selecting a manager dynamically filters charts and tables (e.g., order acceptance and assignment rates), with optional date filters for daily tracking. In the Delivery Data section, users can input one or more Order IDs, triggering targeted SQL queries that return only the corresponding timestamp details. The project focused on building a responsive, efficient, and user-friendly dashboard for non-technical staff.',
+      images: [streamlit1, streamlit2, streamlit3, streamlit4],
     },
     3: {
       title: 'Portfolio website',
