@@ -68,7 +68,18 @@ const ContactSection = () => {
                   <h3>LinkedIn</h3>
                   <p>
                     <a href="https://www.linkedin.com/in/moses-teshome/" target="_blank" rel="noopener noreferrer">
-                      Moses Teshome
+                      linkedin.com/in/moses-teshome
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                <i className="bi bi-github flex-shrink-0"></i>
+                <div>
+                  <h3>GitHub</h3>
+                  <p>
+                    <a href="https://github.com/Mosesteshome" target="_blank" rel="noopener noreferrer">
+                      github.com/Mosesteshome
                     </a>
                   </p>
                 </div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import RHISN1 from "./assets/img/portfolio/RHISNproject/1.png";
 import website from "./assets/img/portfolio/website-portfolio.png";
 import streamlit1 from "./assets/img/portfolio/Streamlit/1.jpeg";
+import yebenfund from "./assets/img/portfolio/yebenfund.png";
 
 const PortfolioSection = () => {
   useEffect(() => {
@@ -73,10 +74,10 @@ const PortfolioSection = () => {
           >
             <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div className="portfolio-content h-100 animate__animated">
-                <img src={RHISN1} className="img-fluid" alt="" />
+                <img src={RHISN1} className="img-fluid" alt="Power BI dashboard built by Muse Teshome" loading="lazy" />
                 <div className="portfolio-info">
-                  <h4>Dashboard 1</h4>
-                  <p>Power Bi Dashboard</p>
+                  <h4>Workforce Readiness Dashboard</h4>
+                  <p>Power BI · M&amp;E Analytics</p>
                   <Link
                     to="/portfolio-details/1"
                     title="More Details"
@@ -89,7 +90,7 @@ const PortfolioSection = () => {
             </div>
             <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <div className="portfolio-content h-100 animate__animated">
-                <img src={website} className="img-fluid" alt="" />
+                <img src={website} className="img-fluid" alt="Portfolio website project by Muse Teshome" loading="lazy" />
                 <div className="portfolio-info">
                   <h4>Portfolio Website</h4>
                   <p>Website Project</p>
@@ -103,14 +104,30 @@ const PortfolioSection = () => {
                 </div>
               </div>
             </div>
+            <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding filter-product">
+              <div className="portfolio-content h-100 animate__animated">
+                <img src={yebenfund} className="img-fluid" alt="YeBen Endowment Fund website and mobile app built by Muse Teshome" loading="lazy" />
+                <div className="portfolio-info">
+                  <h4>YeBen Endowment Fund</h4>
+                  <p>Full-Stack Web </p>
+                  <Link
+                    to="/portfolio-details/4"
+                    title="More Details"
+                    className="details-link"
+                  >
+                    <i className="bi bi-link-45deg"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
             {/* Add additional portfolio items here following the same structure */}
           
               <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                 <div className="portfolio-content h-100 animate__animated">
-                  <img src={streamlit1} className="img-fluid" alt="" />
+                  <img src={streamlit1} className="img-fluid" alt="Streamlit and SQL analytics dashboard by Muse Teshome" loading="lazy" />
                   <div className="portfolio-info">
-                    <h4>Streamlit Dashboard</h4>
-                    <p>Streamlit & SQL Dashboard</p>
+                    <h4>beU Delivery Operations Analytics</h4>
+                    <p>Python · SQL · Streamlit</p>
                     <Link
                       to="/portfolio-details/2"
                       title="More Details"

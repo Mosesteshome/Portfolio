@@ -31,7 +31,7 @@ const Header = () => {
       <i className="header-toggle d-xl-none bi bi-list"></i>
 
       <div className="profile-img">
-        <img src={my_profile_img} alt="" className="img-fluid rounded-circle" />
+        <img src={my_profile_img} alt="Muse Teshome Dejene" className="img-fluid rounded-circle" />
       </div>
 
       <div to="/" className="logo d-flex align-items-center justify-content-center">
@@ -72,6 +72,12 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+
+      <div className="social-links text-center mt-3">
+        <a href="https://www.linkedin.com/in/moses-teshome/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="mx-2"><i className="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Mosesteshome" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="mx-2"><i className="bi bi-github"></i></a>
+        <a href="mailto:mosesteshome@gmail.com" aria-label="Email" className="mx-2"><i className="bi bi-envelope"></i></a>
+      </div>
     </header>
   );
 };

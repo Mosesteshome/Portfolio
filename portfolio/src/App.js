@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 
 function App() {
   useEffect(() => {
-    document.title = "Muse Teshome's Portfolio";
+    document.title = "Muse Teshome Dejene — Data Analyst & Product Manager";
   }, []);
 
   return (

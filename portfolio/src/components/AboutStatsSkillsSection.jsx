@@ -32,30 +32,29 @@ const AboutStatsSkillsSection = () => {
         <div className="container section-title" data-aos="fade-up">
           <h2>About</h2>
           <p>
-            I am a <b>data analyst</b> and <b>full-stack web developer</b> with a strong focus on delivering efficient, data-driven solutions and scalable web applications. I have experience in <b>data visualization</b>, <b>statistical analysis</b>, and <b>automation</b>, helping organizations turn raw data into actionable insights. In web development, I have built and deployed applications, including a <b>football field reservation system</b> using <b>React</b> for the frontend and <b>Node.js</b> for the backend. My approach combines <b>technical expertise</b> with a commitment to meeting <b>deadlines</b> and ensuring <b>high-quality results</b>. Whether it’s analyzing complex datasets or developing robust web solutions, I am dedicated to delivering work that drives impact.
+            I am a <b>data analyst</b> and <b>product manager</b> with 3+ years of experience turning complex, multi-source data into decisions that move the business. At <b>beU Delivery</b> I built the analytics foundation the company runs on — a <b>Tableau dashboard ecosystem</b> used by <b>32+ daily users</b> and automated <b>Python &amp; Streamlit</b> reporting pipelines that save <b>5+ hours per department each week</b> — and was promoted from Junior Data Analyst to <b>Product Manager</b> on the strength of that impact. I work fluently across <b>SQL (MySQL, PostgreSQL)</b>, <b>Python</b>, <b>Power BI</b>, <b>Metabase</b>, and <b>BigQuery</b>, and I bring the same data-first thinking to product strategy, cohort &amp; retention analysis, and stakeholder communication. I care about finding the <b>simplest</b> solution that actually works.
           </p>
         </div>
         <div className="container" data-aos="fade-up" data-aos-delay="100">
           <div className="row gy-4 justify-content-center">
             <div className="col-lg-4">
-              <img src={profile_img} className="img-fluid" alt="" />
+              <img src={profile_img} className="img-fluid" alt="Portrait of Muse Teshome Dejene" loading="lazy" />
             </div>
             <div className="col-lg-8 content">
-              <h2>Data Analyst &amp; Web Developer.</h2>
+              <h2>Data Analyst &amp; Product Manager.</h2>
               <div className="row">
                 <div className="col-lg-6">
                   <ul>
-                    <li><i className="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>25 March 2000</span></li>
                     <li><i className="bi bi-chevron-right"></i> <strong>Email:</strong> <span>mosesteshome@gmail.com</span></li>
-                    <li><i className="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+251960184195</span></li>
+                    <li><i className="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+251 960 184 195</span></li>
                     <li><i className="bi bi-chevron-right"></i> <strong>City:</strong> <span>Addis Ababa, Ethiopia</span></li>
                   </ul>
                 </div>
                 <div className="col-lg-6">
                   <ul>
-                    <li><i className="bi bi-chevron-right"></i> <strong>Age:</strong> <span>25</span></li>
-                    <li><i className="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Software Engineer</span></li>
-                    <li><i className="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                    <li><i className="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>BSc, Software Engineering</span></li>
+                    <li><i className="bi bi-chevron-right"></i> <strong>Current:</strong> <span>Product Manager @ beU Delivery</span></li>
+                    <li><i className="bi bi-chevron-right"></i> <strong>Remote:</strong> <span>Open to remote roles</span></li>
                   </ul>
                 </div>
               </div>
@@ -70,23 +69,30 @@ const AboutStatsSkillsSection = () => {
           <div className="row gy-4">
             <div className="col-lg-3 col-md-6">
               <div className="stats-item">
-                <i className="bi bi-emoji-smile"></i>
+                <i className="bi bi-calendar-check"></i>
                 <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" className="purecounter"></span>
-                <p><strong>Happy Clients</strong></p>
+                <p><strong>Years in Data &amp; Product</strong></p>
               </div>
             </div>
             <div className="col-lg-3 col-md-6">
               <div className="stats-item">
-                <i className="bi bi-journal-richtext"></i>
+                <i className="bi bi-people"></i>
+                <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" className="purecounter"></span>
+                <p><strong>Daily Dashboard Users</strong></p>
+              </div>
+            </div>
+            <div className="col-lg-3 col-md-6">
+              <div className="stats-item">
+                <i className="bi bi-bar-chart-line"></i>
+                <span data-purecounter-start="0" data-purecounter-end="9" data-purecounter-duration="1" className="purecounter"></span>
+                <p><strong>Analytics Solutions Shipped</strong></p>
+              </div>
+            </div>
+            <div className="col-lg-3 col-md-6">
+              <div className="stats-item">
+                <i className="bi bi-clock-history"></i>
                 <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" className="purecounter"></span>
-                <p><strong>Projects</strong></p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <div className="stats-item">
-                <i className="bi bi-headset"></i>
-                <span data-purecounter-start="0" data-purecounter-end="180" data-purecounter-duration="1" className="purecounter"></span>
-                <p><strong>Hours Of Support</strong></p>
+                <p><strong>Hours Saved / Dept / Week</strong></p>
               </div>
             </div>
           </div>
@@ -103,39 +109,39 @@ const AboutStatsSkillsSection = () => {
           <div className="row skills-content skills-animation">
             <div className="col-lg-6">
               <div className="progress">
-                <span className="skill"><span>Data Visualization (Streamlit, Power BI, Tableau)</span> <i className="val">85%</i></span>
+                <span className="skill"><span>SQL &amp; Databases (MySQL, PostgreSQL, BigQuery)</span> <i className="val">92%</i></span>
                 <div className="progress-bar-wrap">
-                  <div className="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div className="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
               <div className="progress">
-                <span className="skill"><span>Statistical Analysis (Stata, SPSS)</span> <i className="val">80%</i></span>
-                <div className="progress-bar-wrap">
-                  <div className="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div className="progress">
-                <span className="skill"><span>Programming (Python, R, SQL)</span> <i className="val">90%</i></span>
+                <span className="skill"><span>Data Visualization (Tableau, Power BI, Metabase, Streamlit)</span> <i className="val">90%</i></span>
                 <div className="progress-bar-wrap">
                   <div className="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div className="progress">
+                <span className="skill"><span>Python for Data (Pandas, NumPy)</span> <i className="val">88%</i></span>
+                <div className="progress-bar-wrap">
+                  <div className="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
             </div>
             <div className="col-lg-6">
               <div className="progress">
-                <span className="skill"><span>Excel & Google Apps Script</span> <i className="val">88%</i></span>
+                <span className="skill"><span>Product &amp; User Analytics (KPIs, Cohort, Retention, A/B)</span> <i className="val">85%</i></span>
                 <div className="progress-bar-wrap">
-                  <div className="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div className="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
               <div className="progress">
-                <span className="skill"><span>Frontend Development (React)</span> <i className="val">75%</i></span>
+                <span className="skill"><span>Statistical Analysis (Stata, R)</span> <i className="val">80%</i></span>
                 <div className="progress-bar-wrap">
-                  <div className="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div className="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
               <div className="progress">
-                <span className="skill"><span>Backend Development (Node.js)</span> <i className="val">75%</i></span>
+                <span className="skill"><span>Web &amp; Mobile (React, Flutter/Dart)</span> <i className="val">75%</i></span>
                 <div className="progress-bar-wrap">
                   <div className="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
