@@ -7,18 +7,23 @@ import RHISN2 from './assets/img/portfolio/RHISNproject/2.png';
 import RHISN3 from './assets/img/portfolio/RHISNproject/3.png';
 import RHISN4 from './assets/img/portfolio/RHISNproject/4.png';
 import RHISN5 from './assets/img/portfolio/RHISNproject/5.png';
+<<<<<<< HEAD
 import website from './assets/img/portfolio/website-portfolio.png';
 import streamlit1 from './assets/img/portfolio/Streamlit/1.jpeg';
 import streamlit2 from './assets/img/portfolio/Streamlit/2.jpeg';
 import streamlit3 from './assets/img/portfolio/Streamlit/3.png';
 import streamlit4 from './assets/img/portfolio/Streamlit/4.png';
 import yebenfund from './assets/img/portfolio/yebenfund.png';
+=======
+import portfolio_product_1 from './assets/img/portfolio/product-1.jpg';
+>>>>>>> parent of b9db808 (component based and code cleaned)
 
 function PortfolioDetails() {
   const { id } = useParams();
 
   const projectDetails = {
     1: {
+<<<<<<< HEAD
       title: 'Workforce Readiness Survey Dashboard',
       category: 'Power BI · M&E Analytics',
       role: 'Data Analyst — Zerihun Association',
@@ -74,6 +79,18 @@ function PortfolioDetails() {
         'Zero-cost hosting with a simple one-command deploy.',
       ],
       images: [website],
+=======
+      title: 'App 1',
+      category: 'Web Design',
+      description: 'Description for App 1.',
+      images: [RHISN1, RHISN2, RHISN3, RHISN4, RHISN5],
+    },
+    2: {
+      title: 'Product 1',
+      category: 'Product Design',
+      description: 'Description for Product 1.',
+      images: [portfolio_product_1],
+>>>>>>> parent of b9db808 (component based and code cleaned)
     },
     4: {
       title: 'YeBen Endowment Fund',
@@ -110,13 +127,13 @@ function PortfolioDetails() {
           <div className="logo d-flex align-items-center justify-content-center">
             <h1 className="sitename">Muse Teshome</h1>
           </div>
-          {/* <div className="social-links text-center">
+          <div className="social-links text-center">
             <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
             <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
             <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
             <a href="#" className="google-plus"><i className="bi bi-skype"></i></a>
             <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
-          </div> */}
+          </div>
           <nav id="navmenu" className="navmenu">
             <ul>
               <li><Link to="/" className="active"><i className="bi bi-house navicon"></i> Home</Link></li>
@@ -155,13 +172,13 @@ function PortfolioDetails() {
         <div className="logo d-flex align-items-center justify-content-center">
           <h1 className="sitename">Muse Teshome</h1>
         </div>
-        {/* <div className="social-links text-center">
+        <div className="social-links text-center">
           <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
           <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
           <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
           <a href="#" className="google-plus"><i className="bi bi-skype"></i></a>
           <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
-        </div> */}
+        </div>
         <nav id="navmenu" className="navmenu">
           <ul>
             <li><Link to="/" className="active"><i className="bi bi-house navicon"></i> Home</Link></li>
