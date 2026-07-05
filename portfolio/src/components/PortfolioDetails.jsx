@@ -13,6 +13,9 @@ import streamlit2 from './assets/img/portfolio/Streamlit/2.jpeg';
 import streamlit3 from './assets/img/portfolio/Streamlit/3.png';
 import streamlit4 from './assets/img/portfolio/Streamlit/4.png';
 import yebenfund from './assets/img/portfolio/yebenfund.png';
+import gametracker1 from './assets/img/portfolio/game-tracker/1.png';
+import gametracker2 from './assets/img/portfolio/game-tracker/2.png';
+import gametracker3 from './assets/img/portfolio/game-tracker/3.png';
 
 function PortfolioDetails() {
   const { id } = useParams();
@@ -93,6 +96,26 @@ function PortfolioDetails() {
         'Demonstrated end-to-end ownership — from concept and design to deployment and iteration.',
       ],
       images: [yebenfund],
+    },
+    5: {
+      title: 'PS House Tracker — Gaming Lounge PWA',
+      category: 'Progressive Web App · Business Tool',
+      role: 'Full-Stack Developer (Solo)',
+      timeframe: '2026',
+      tools: ['Vanilla JavaScript', 'PWA / Service Worker', 'Google Sheets', 'Google Apps Script'],
+      url: 'https://game-tracker-iqxc.onrender.com/',
+      overview:
+        'An offline-first Progressive Web App that runs the day-to-day of a PlayStation rental shop in Ethiopia — staff time console rentals and sell snacks, while the owner gets a PIN-protected revenue dashboard. It is a self-contained front end (HTML/CSS/vanilla JS, no framework, no build step) synced to a Google Sheet, with prices in Birr and Ethiopian payment methods (Cash, CBE, TeleBirr, BOA).',
+      challenge:
+        'A small gaming shop needed to track two revenue streams — per-console play time across 5 PlayStations and snack sales — on cheap phones with unreliable internet, without paying for POS hardware or a database. It had to keep working fully offline, sync across every counter device to one shared source of truth, and never double-count a sale. The owner also needed private access to the numbers that could not be bypassed by inspecting the code.',
+      solution:
+        'I built a two-tier single-page app. The open staff view shows 5 console cards with live countdown timers, progress bars, an audio alarm and counting-up overtime when a session expires, back-to-back sessions that accumulate into one visit, and split-payment collection with live balance validation — plus a snack-sale panel. The PIN-protected owner dashboard pulls its PIN live from a Google Sheet cell (never stored in the app, so login requires being online) and shows revenue metrics, a by-payment-method breakdown, a sessions-per-console chart, a filterable visit log, item management, date filtering, and CSV export. Every action saves to localStorage first, then a retry-on-reconnect sync queue pushes it to Google Sheets via an Apps Script backend; unique per-record UIDs and a guarded flush make syncing idempotent so no row is ever duplicated. A service worker caches the app shell for offline install while always letting sync calls reach the network.',
+      impact: [
+        'Replaced manual paper tracking with live per-console timing, split-payment collection, and automatic daily totals.',
+        'Works fully offline and installs to a phone home screen, syncing every counter device to one shared Google Sheet.',
+        'Idempotent UID-based sync eliminated a real duplicate-row bug, keeping owner revenue numbers trustworthy at near-zero running cost.',
+      ],
+      images: [gametracker1, gametracker2, gametracker3],
     },
     // Add more project details as needed
   };
@@ -195,6 +218,14 @@ function PortfolioDetails() {
                     {project.role && <li><strong>Role</strong>: {project.role}</li>}
                     {project.timeframe && <li><strong>Timeframe</strong>: {project.timeframe}</li>}
                     {project.tools && <li><strong>Tools</strong>: {project.tools.join(', ')}</li>}
+                    {project.url && (
+                      <li>
+                        <strong>Live Site</strong>:{' '}
+                        <a href={project.url} target="_blank" rel="noopener noreferrer">
+                          Visit <i className="bi bi-box-arrow-up-right"></i>
+                        </a>
+                      </li>
+                    )}
                   </ul>
                 </div>
                 <div className="portfolio-description" data-aos="fade-up" data-aos-delay="300">

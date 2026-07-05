@@ -4,6 +4,7 @@ import RHISN1 from "./assets/img/portfolio/RHISNproject/1.png";
 import website from "./assets/img/portfolio/website-portfolio.png";
 import streamlit1 from "./assets/img/portfolio/Streamlit/1.jpeg";
 import yebenfund from "./assets/img/portfolio/yebenfund.png";
+import gametracker1 from "./assets/img/portfolio/game-tracker/1.png";
 
 const PortfolioSection = () => {
   useEffect(() => {
@@ -121,7 +122,24 @@ const PortfolioSection = () => {
               </div>
             </div>
             {/* Add additional portfolio items here following the same structure */}
-          
+
+            <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding filter-product">
+              <div className="portfolio-content h-100 animate__animated">
+                <img src={gametracker1} className="img-fluid" alt="PS House PlayStation lounge management system built by Muse Teshome" loading="lazy" />
+                <div className="portfolio-info">
+                  <h4>PS House Tracker</h4>
+                  <p>Progressive Web App ·  JS</p>
+                  <Link
+                    to="/portfolio-details/5"
+                    title="More Details"
+                    className="details-link"
+                  >
+                    <i className="bi bi-link-45deg"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
               <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                 <div className="portfolio-content h-100 animate__animated">
                   <img src={streamlit1} className="img-fluid" alt="Streamlit and SQL analytics dashboard by Muse Teshome" loading="lazy" />
